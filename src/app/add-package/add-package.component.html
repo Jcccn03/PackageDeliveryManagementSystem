@@ -1,0 +1,45 @@
+<div class="album py-5">
+    <div class="container">    
+        <h3>Add New Package Form</h3>
+        <div>
+            <div class="col">
+                <div class="card shadow -sm">
+                    <div class="card-body">
+                        <div class="section">
+                            <div class="form-group">
+                                <label for="packageTitle">Package Title</label>
+                                <input type="text" name="packageTitle" class="form-control" id="packageTitle" placeholder="Enter Package Title" [(ngModel)]="package.packageTitle"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea rows="3" cols="20" maxlength="30" minlength="0" name="description" id="description" class="form-control" [(ngModel)]="package.description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="packageWeight">Package Weight</label>
+                                <input type="number" name="packageWeight" class="form-control" id="packageWeight" min="0.01" step="any" placeholder="Enter Package Weight" [(ngModel)]="package.packageWeight"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="packageDestination">Package Destination</label>
+                                <input type="text" name="packageDestination" class="form-control" id="packageDestination" placeholder="Enter Package Destination" [(ngModel)]="package.packageDestination"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="driverId">Driver ID</label>
+                                <select id="driverId" name="driverId" class="form-control" [(ngModel)]="package.driverId">
+                                    <option default>Select A Driver</option>
+                                    @for(driver of drivers; track $index){
+                                        <option value="{{driver._id}}">{{driver.driverName}}</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-check form-switch">
+                                <label for="isAllocated">Is Allocated?</label>
+                                <input class="form-check-input" type="checkbox" name="isAllocated" id="isAllocated" [(ngModel)]="package.isAllocated"/>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" (click)="onSavePackage()">Save Package</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

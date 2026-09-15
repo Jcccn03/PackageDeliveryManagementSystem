@@ -1,0 +1,72 @@
+<div class="album py-5">
+    <div class="container">    
+        <h3 style="text-align: center;">Translate</h3>
+        <div>
+            <div class="col">
+                <div class="card shadow -sm">
+                    <div class="card-body">
+                        @if(packagesDB.length === 0){
+                            <h2>No Packages Found</h2>
+                        } @else{
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Package Title</th>
+                                        <th scope="col">Package Weight</th>
+                                        <th scope="col">Package Destination</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Translate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for(package of packagesDB; track $index){
+                                        <tr>
+                                            <td>{{package.packageId}}</td>
+                                            <td>{{package.packageTitle}}</td>
+                                            <td>{{package.packageWeight}}</td>
+                                            <td>{{package.packageDestination}}</td>
+                                            <td>{{package.description}}</td>
+                                            <td><button type="submit" class="btn btn-primary" (click)="sendRequest(package.description)">Translate</button></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                            <div class="form-group">
+                                <label for="lang">Target Language</label>
+                                <select id="lang" name="lang" class="form-control" [(ngModel)]="lang">
+                                    <option value="">Select a Language</option>
+                                    <option value="zh-CN">Chinese</option>
+                                    <option value="ko">Korean</option>
+                                    <option value="ja">Japanese</option>
+                                </select>
+                            </div>
+                            <hr>
+                            @if(translateIsClicked){
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Text</th>
+                                            <th scope="col">Target Language</th>
+                                            <th scope="col">Translation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for(text of translatedTexts; track $index){
+                                            <tr>
+                                                <td>{{text.text}}</td>
+                                                <td>{{text.language}}</td>
+                                                <td>{{text.translation}}</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                        } 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

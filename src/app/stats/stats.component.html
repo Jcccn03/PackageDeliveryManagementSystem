@@ -1,0 +1,54 @@
+@if(!isLoading){
+    <div class="album py-5">
+        <div class="container" style="width: 1000px;">
+            <h2>CRUD Operation Statistics</h2><br/>
+            <div class="row row-cols-1 g-3">
+                <div class="col">
+                    <table class="table table-hover">
+                        <thead style="font-size: larger;">
+                            <tr>
+                                <th scope="col">Operation</th>
+                                <th scope="col">Count</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            <tr style="font-size: large;">
+                                <th>Create</th>
+                                <td>{{stats.create}}</td>
+                            </tr>
+                            <tr style="font-size: large;">
+                                <th>Retrieve</th>
+                                <td>{{stats.retrieve}}</td>
+                            </tr>
+                            <tr style="font-size: large;">
+                                <th>Update</th>
+                                <td>{{stats.update}}</td>
+                            </tr>
+                            <tr style="font-size: large;">
+                                <th>Delete</th>
+                                <td>{{stats.delete}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="album py-5">
+        <div class="container">
+          <div class="card shadow-sm" style="width: 300px; height: 200px; display: block; margin-left: auto; margin-right: auto;">
+            <div class="card-body">
+              <p style="font-size: large; text-align: center;"><strong>Drivers Count: {{driversDB.length}}</strong></p> <br/>
+              <p style="font-size: large; text-align: center;"><strong>Packages Count: {{packagesDB.length}}</strong></p> <br/>
+            </div>
+          </div>
+        </div>
+    </div>
+}@else{
+    <div class="container" style="margin-top: 50px;">
+        <h3 style="justify-content: center;display: flex;">Loading...</h3>
+
+    </div>
+}
+

@@ -1,0 +1,38 @@
+<div class="album py-5">
+    <div class="container">
+        <h3>Add New Driver Form</h3>
+        <div>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="section">
+                            <div class="form-group">
+                                <label for="driverName">Driver Name</label>
+                                <input type="text" name="driverName" class="form-control" id="driverName" placeholder="Enter Driver Name" [(ngModel)]="driver.driverName"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="driverDepartment">Driver Department</label>
+                                <select id="driverDepartment" name="driverDepartment" class="form-control" [(ngModel)]="driver.driverDepartment">
+                                    <option default>Select A Department</option>
+                                    <option>Food</option>
+                                    <option>Furniture</option>
+                                    <option>Electronic</option>
+                                </select>                        
+                            </div>
+                            <div class="form-group">
+                                <label for="driverLicense">Driver License</label>
+                                <input type="text" name="driverLicense" class="form-control" id="driverLicense" placeholder="Enter Driver License" [(ngModel)]="driver.driverLicense"/>
+                            </div>
+                            <div class="form-check form-switch">
+                                <label for="driverIsActive">Is Active?</label>
+                                <input class="form-check-input" type="checkbox" name="driverIsActive" id="driverIsActive" [(ngModel)]="driver.driverIsActive"/>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" (click)="onSaveDriver()">Save Driver</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

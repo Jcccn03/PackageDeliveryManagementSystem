@@ -1,0 +1,86 @@
+<div class="album py-5">
+    <div class="container">
+        <div class="row row-cols-1 g-3">
+            <div class="col">
+                @if(!packagesLoading){
+                    @if(packagesDB.length === 0){
+                        <h2>No Packages Found</h2>
+                    } @else{
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Package Title</th>
+                                    <th scope="col">Package Weight</th>
+                                    <th scope="col">Package Destination</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Created At</th>
+                                    <th scope="col">Is Allocated?</th>
+                                    <th scope="col">Driver ID</th>
+                                    <th scope="col">Delete ?</th>
+                                    <th scope="col">Driver</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for(package of packagesDB; track $index){
+                                    <tr>
+                                        <td>{{package.packageId}}</td>
+                                        <td>{{package.packageTitle}}</td>
+                                        <td>{{package.packageWeight | kgToGram}} g</td>
+                                        <td>{{package.packageDestination}}</td>
+                                        <td>{{package.description}}</td>
+                                        <td>{{package.createdAt}}</td>
+                                        <td>{{package.isAllocated}}</td>
+                                        <td>{{package.driverId.driverId}}</td>
+                                        <td><button type="submit" class="btn btn-danger" (click)="onDeletePackage(package)" style="background-color: red;color: white;">X</button></td>
+                                        <td><button type="submit" class="btn btn-primary" (click)="onGetDriver(package)">?</button></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                }@else{
+                    <div class="container" style="margin-top: 50px;">
+                        <h3 style="justify-content: center;display: flex;">Loading...</h3>
+                    </div>
+                }
+                
+                <br>
+                <hr>
+                @if(packageSelected){
+                    @if(!isLoading){
+                        @if(!driverForAPackage){
+                            <h2 style="text-align: center;">No Driver Found</h2>
+                        } @else{
+                            <h3 style="text-align: center;">Driver Details</h3>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Driver Name</th>
+                                        <th>Department</th>
+                                        <th>License</th>
+                                        <th>Is Active?</th>
+                                    </tr>
+                                </thead>
+            
+                                <tbody>
+                                    <tr>
+                                        <td>{{driverForAPackage.driverName | upperCase}}</td>
+                                        <td>{{driverForAPackage.driverDepartment}}</td>
+                                        <td>{{driverForAPackage.driverLicense}}</td>
+                                        <td>{{driverForAPackage.driverIsActive}}</td>
+                                    </tr>  
+                                </tbody>
+                            </table>
+                        }
+                    }@else{
+                        <div class="container" style="margin-top: 50px;">
+                            <h3 style="justify-content: center;display: flex;">Loading...</h3>
+                        </div>
+                    }
+                    
+                }
+            </div>
+        </div>
+    </div>
+</div>

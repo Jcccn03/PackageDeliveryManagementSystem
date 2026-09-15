@@ -1,0 +1,90 @@
+<div class="album py-5">
+    <div class="container">  
+        <div class="row row-cols-1 g-3">
+            <div class="col">
+                @if(!isDriverLoading){
+                    @if(driversDB.length === 0){
+                        <h2>No Drivers Found</h2>
+                    }@else{
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Driver Id</th>
+                                    <th>Driver Name</th>
+                                    <th>Department</th>
+                                    <th>License</th>
+                                    <th>Is Active?</th>
+                                    <th>Created At</th>
+                                    <th>Delete ?</th>
+                                    <th>Packages</th>
+                                </tr>
+                            </thead>
+        
+                            <tbody>
+                                @for(driver of driversDB; track $index){
+                                    <tr>
+                                        <td>{{driver.driverId}}</td>
+                                        <td>{{driver.driverName | upperCase}}</td>
+                                        <td>{{driver.driverDepartment}}</td>
+                                        <td>{{driver.driverLicense}}</td>
+                                        <td>{{driver.driverIsActive}}</td>
+                                        <td>{{driver.driverCreatedAt}}</td>
+                                        <td><button type="submit" class="btn btn-danger" (click)="onDeleteDriver(driver)" style="background-color: red;color: white;">X</button></td>
+                                        <td><button type="submit" class="btn btn-primary" (click)="onGetPackages(driver)">?</button></td>
+                                    </tr>  
+                                }
+                            </tbody>
+                        </table>
+                    }
+                }@else{
+                        <div class="container" style="margin-top: 50px;">
+                            <h3 style="justify-content: center;display: flex;">Loading...</h3>
+                        </div>
+                    }
+                <br>
+                <hr>
+                @if(driverToFindPackage){
+                    @if(!isLoading){
+                        @if(packageForADriver.length === 0){
+                            <h2 style="text-align: center;">No Packages Found</h2>
+                        } @else{
+                            <h3 style="text-align: center;">Package Details</h3>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Package Title</th>
+                                        <th scope="col">Package Weight</th>
+                                        <th scope="col">Package Destination</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Created At</th>
+                                        <th scope="col">Is Allocated?</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for(package of packageForADriver; track $index){
+                                        <tr>
+                                            <td>{{package.packageId}}</td>
+                                            <td>{{package.packageTitle}}</td>
+                                            <td>{{package.packageWeight | kgToGram}} g</td>
+                                            <td>{{package.packageDestination}}</td>
+                                            <td>{{package.description}}</td>
+                                            <td>{{package.createdAt}}</td>
+                                            <td>{{package.isAllocated}}</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    }@else{
+                        <div class="container" style="margin-top: 50px;">
+                            <h3 style="justify-content: center;display: flex;">Loading...</h3>
+                        </div>
+                    }
+                    
+                }
+                
+            </div>
+        </div>
+    </div>
+</div>

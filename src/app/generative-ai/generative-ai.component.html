@@ -1,0 +1,45 @@
+<div class="album py-5">
+    <div class="container">    
+        <h3 style="text-align: center;">Distance Calculator</h3>
+        <div>
+            <div class="col">
+                <div class="card shadow -sm">
+                    <div class="card-body">
+                        @if(packagesDB.length === 0){
+                            <h2>No Packages Found</h2>
+                        } @else{
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Package Title</th>
+                                        <th scope="col">Package Weight</th>
+                                        <th scope="col">Package Destination</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">KMs to Melbourne</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for(package of packagesDB; track $index){
+                                        <tr>
+                                            <td>{{package.packageId}}</td>
+                                            <td>{{package.packageTitle}}</td>
+                                            <td>{{package.packageWeight}} g</td>
+                                            <td>{{package.packageDestination}}</td>
+                                            <td>{{package.description}}</td>
+                                            <td><button type="submit" class="btn btn-primary" (click)="getDistance(package.packageDestination)">Get Distance</button></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <hr>
+                            <div class="form-group">
+                                <h3>{{response}}</h3>
+                            </div>                            
+                        } 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

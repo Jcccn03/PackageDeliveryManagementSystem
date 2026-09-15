@@ -1,0 +1,49 @@
+<div class="album py-5">
+    <div class="container">
+        <div class="row row-cols-1 g-3">
+            <div class="col">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>License</th>
+                            <th>Department</th>
+                            <th>Select !</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(item of driversDB; track $index){
+                            <tr>
+                                <td>{{item.driverName}}({{item._id}})</td>
+                                <td>{{item.driverLicense}}</td>
+                                <td>{{item.driverDepartment}}</td>
+                                <td><button type="submit" class="btn btn-primary" (click)="onSelectUpdate(item)">I want to update this</button></td>
+                            </tr>
+                        }
+                    </tbody> 
+                </table>
+                <hr>
+                @if(driversDB.length > 0){
+                    <div>
+                        
+                        <div class="form-group">
+                            <label for="driverLicense">Driver License</label>
+                            <input type="text" class="form-control" id="driverLicense" [(ngModel)]="license">
+                        </div>
+                        <div class="form-group">
+                            <label for="driverDepartment" class="form-label">Driver Department</label>
+                            <select id="driverDepartment" name="driverDepartment" class="form-control" [(ngModel)]="department">
+                                <option default>Select A Department</option>
+                                <option>Food</option>
+                                <option>Furniture</option>
+                                <option>Electronic</option>
+                            </select>                        
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary" (click)="onUpdateDriver()">Update Driver</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

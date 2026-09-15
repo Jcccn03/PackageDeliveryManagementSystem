@@ -1,0 +1,41 @@
+<div class="album py-5">
+    <div class="container">
+        <div class="row row-cols-1 g-3">
+            <div class="col">
+                @if(packagesDB.length === 0){
+                    <h2>No Packages Found</h2>
+                } @else{
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Package Title</th>
+                                <th scope="col">Package Weight</th>
+                                <th scope="col">Package Destination</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Created At</th>
+                                <th scope="col">Is Allocated?</th>
+                                <th scope="col">Driver ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(package of packagesDB; track $index){
+                                <tr>
+                                    <td>{{package.packageId}}</td>
+                                    <td>{{package.packageTitle}}</td>
+                                    <td>{{package.packageWeight}}</td>
+                                    <td>{{package.packageDestination}}</td>
+                                    <td>{{package.description}}</td>
+                                    <td>{{package.createdAt}}</td>
+                                    <td>{{package.isAllocated}}</td>
+                                    <td>{{package.driverId.driverId}}</td>
+                                    <td><button type="submit" class="btn btn-danger" (click)="onDeletePackage(package)" style="background-color: red;color: white;">X</button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>

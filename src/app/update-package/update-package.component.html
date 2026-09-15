@@ -1,0 +1,45 @@
+<div class="album py-5">
+    <div class="container">
+        <div class="row row-cols-1 g-3">
+            <div class="col">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Weight</th>
+                            <th>Destination</th>
+                            <th>Description</th>
+                            <th>isAllocated</th>
+                            <th>Driver ID</th>
+                            <th>Select !</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(item of packagesDB; track $index){
+                            <tr>
+                                <td>{{item.packageTitle}}({{item._id}})</td>
+                                <td>{{item.packageWeight}}</td>
+                                <td>{{item.packageDestination}}</td>
+                                <td>{{item.description}}</td>
+                                <td>{{item.isAllocated}}</td>
+                                <td>{{item.driverId.driverId}}</td>
+                                <td><button type="submit" class="btn btn-primary" (click)="onSelectUpdate(item)">I want to update this</button></td>
+                            </tr>
+                        }
+                    </tbody> 
+                </table>
+                <hr>
+                @if(packagesDB.length > 0){
+                    <div>
+                        <div class="form-group">
+                            <label for="packageDestination">Destination</label>
+                            <input type="text" class="form-control" id="packageDestination" [(ngModel)]="packageDestination">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary" (click)="onUpdatePackage()">Update Package's Destination</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

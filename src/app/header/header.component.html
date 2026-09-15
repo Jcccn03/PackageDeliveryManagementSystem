@@ -1,0 +1,46 @@
+<div class="header">
+    <img src="/assets/logo.png" style="width: 200px; height: 200px; display: block; margin-left: auto; margin-right: auto;" class="center"/>
+    <h1><strong>FIT 2095 Package Delivery Management Application</strong></h1>
+</div>
+
+<div class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a routerLink="/" routerLinkActive="active">Home Page</a>
+    <div class="dropdown">
+        <button class="dropbtn">Drivers Actions
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a routerLink="/add-driver" routerLinkActive="active">Add Driver</a>
+            <a routerLink="/list-drivers" routerLinkActive="active">List Drivers</a>
+            <a routerLink="/update-driver" routerLinkActive="active">Update Driver</a>
+            <a routerLink="/delete-driver" routerLinkActive="active">Delete Driver</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Packages Actions
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a routerLink="/add-package" routerLinkActive="active">Add Package</a>
+            <a routerLink="/list-packages" routerLinkActive="active">List Packages</a>
+            <a routerLink="/update-package" routerLinkActive="active">Update Package</a>
+            <a routerLink="/delete-package" routerLinkActive="active">Delete Package</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Cloud Service Actions
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a routerLink="/translate" routerLinkActive="active">Translate</a>
+            <a routerLink="/text2speech" routerLinkActive="active">Text to Speech</a>
+            <a routerLink="/gen-ai" routerLinkActive="active">Generative AI</a>
+        </div>
+    </div>
+    <a routerLink="/stats" routerLinkActive="active">Statistics</a>
+    <div class="navbar-buttons">
+        <button type='submit' class="btn btn-primary" routerLink="/login" routerLinkActive="active">Login</button>
+        <button type="submit" class="btn btn-primary" (click)="onLogout()">Logout</button>
+    </div>
+</div>
+

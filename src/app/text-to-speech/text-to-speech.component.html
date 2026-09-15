@@ -1,0 +1,52 @@
+<div class="album py-5">
+    <div class="container">  
+        <h3 style="text-align: center;">Text To Speech</h3>
+        <div class="row row-cols-1 g-3">
+            <div class="col">
+                @if(driversDB.length === 0){
+                    <h2>No Drivers Found</h2>
+                }@else{
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Driver Id</th>
+                                <th>Driver Name</th>
+                                <th>Department</th>
+                                <th>License</th>
+                                <th>Speech</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+                            @for(driver of driversDB; track $index){
+                                <tr>
+                                    <td>{{driver.driverId}}</td>
+                                    <td>{{driver.driverName}}</td>
+                                    <td>{{driver.driverDepartment}}</td>
+                                    <td>{{driver.driverLicense}}</td>
+                                    <td><button type="submit" class="btn btn-primary" (click)="onGetSpeech(driver.driverLicense)">S</button></td>
+                                </tr>  
+                            }
+                        </tbody>
+                    </table>
+                    <br>
+                    <div class="form-group">
+                        <label for="text">Text To Convert</label>
+                        <textarea rows="3" cols="20" maxlength="30" minlength="0" name="text" id="text" class="form-control">{{textToConvert}}</textarea>
+                    </div>
+                }
+                <hr>
+                @if(getSpeechIsClicked){
+                    <p>Converted Speech</p>
+                    <audio id="audioPlayer" autoplay controls>
+                        <source id='audioSource' src='{{convertedFilePath}}' type="audio/mp3">
+                        Your browser does not support the audio element
+                    </audio>
+
+                    <!-- <button (click)="playAudio()">Play Audio</button> -->
+                }
+                
+            </div>
+        </div>
+    </div>
+</div>
